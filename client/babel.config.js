@@ -1,5 +1,3 @@
-console.log('여기오긴 오는고니??');
-
 module.exports = function (api) {
   api.cache(true);
 
