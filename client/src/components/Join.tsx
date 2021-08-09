@@ -1,29 +1,59 @@
 import React, {
   ChangeEventHandler,
   KeyboardEventHandler,
-  ReactEventHandler,
   useCallback,
   useReducer,
 } from 'react';
 
-interface IState {
+interface State {
   name: string;
   nickname: string;
 }
 
-function reducer(state: IState, action: HTMLInputElement) {
-  return {
-    ...state,
-    [action.name]: action.value,
-  };
+const initState: State = {
+  name: '',
+  nickname: '',
+};
+
+interface Props {
+  getUsers: () => void;
 }
 
-const Join = () => {
-  const [state, dispatch] = useReducer(reducer, { name: '', nickname: '' });
+const SET = 'set' as const;
+const RESET = 'reset' as const;
+
+const setAction = (payload: Partial<State>) => ({
+  type: SET,
+  payload,
+});
+
+const resetAction = () => ({ type: RESET });
+
+type Action = ReturnType<typeof setAction> | ReturnType<typeof resetAction>;
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case SET:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case RESET:
+      return initState;
+  }
+}
+
+const Join = ({ getUsers }: Props) => {
+  const [state, dispatch] = useReducer(reducer, initState);
   const { name, nickname } = state;
 
   const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((e) => {
-    dispatch(e.target);
+    dispatch({
+      type: 'set',
+      payload: {
+        [e.target.name]: e.target.value,
+      },
+    });
   }, []);
 
   const onClick = useCallback(() => {
@@ -36,7 +66,11 @@ const Join = () => {
       },
     })
       .then((response) => response.json())
-      .then(console.log);
+      .then((result) => {
+        console.log(result);
+        getUsers();
+        dispatch({ type: 'reset' });
+      });
   }, [state]);
 
   const onKeyPress: KeyboardEventHandler<HTMLInputElement> = useCallback(

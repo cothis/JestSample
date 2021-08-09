@@ -1,29 +1,20 @@
-import React, { useEffect, useState } from 'react';
-interface User {
-  id: number;
-  name: string;
-  nickname: string;
+import React from 'react';
+import { User } from './App';
+
+interface Props {
+  users: User[];
 }
 
-const UserList = () => {
-  const [users, setUsers] = useState<JSX.Element[]>();
-  useEffect(() => {
-    fetch('http://localhost:3000/api/users', { credentials: 'include' })
-      .then((response) => response.json())
-      .then((datas: User[]) => {
-        console.log(datas);
-        const results = datas.map((data) => (
-          <li key={data.id}>
-            {data.name}({data.nickname})
-          </li>
-        ));
-        setUsers(results);
-      });
-  }, []);
+const UserList = ({ users }: Props) => {
+  const lis = users.map((user) => (
+    <li key={user.id}>
+      {user.name}({user.nickname})
+    </li>
+  ));
 
   return (
     <div>
-      <ul>{users}</ul>
+      <ul>{lis}</ul>
     </div>
   );
 };
