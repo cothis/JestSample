@@ -24,4 +24,14 @@ export class UserController {
       throw err;
     }
   };
+
+  createUser = (req: Request, res: Response) => {
+    console.log(req.body);
+    try {
+      res.json(this.userService.createUser(req.body));
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  };
 }

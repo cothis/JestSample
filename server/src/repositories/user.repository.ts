@@ -1,3 +1,4 @@
+import { CreateUserForm } from '../dtos/create-user-form';
 import { User } from '../entities/user.entity';
 
 export class UserRepository {
