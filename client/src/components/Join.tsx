@@ -47,30 +47,30 @@ const Join = ({ getUsers }: Props) => {
   const [state, dispatch] = useReducer(reducer, initState);
   const { name, nickname } = state;
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((e) => {
-    dispatch({
-      type: 'set',
-      payload: {
-        [e.target.name]: e.target.value,
-      },
-    });
-  }, []);
+  const onChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+    ({ target }) => {
+      dispatch({
+        type: 'set',
+        payload: {
+          [target.name]: target.value,
+        },
+      });
+    },
+    []
+  );
 
-  const onClick = useCallback(() => {
-    fetch('http://localhost:3000/api/users', {
+  const onClick = useCallback(async () => {
+    const response = await fetch('http://localhost:3000/api/users', {
       method: 'post',
       body: JSON.stringify(state),
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        getUsers();
-        dispatch({ type: 'reset' });
-      });
+    });
+    const result = await response.json();
+    getUsers();
+    dispatch({ type: 'reset' });
   }, [state]);
 
   const onKeyPress: KeyboardEventHandler<HTMLInputElement> = useCallback(
