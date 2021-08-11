@@ -2,12 +2,12 @@ import type { Config } from '@jest/types';
 
 // Sync Object
 const config: Config.InitialOptions = {
-  moduleFileExtensions: ['js', 'ts', 'json'],
+  moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
-  testMatch: ['<rootDir>/test/**/*.spec.ts'],
+  testMatch: ['<rootDir>/test/**/*.spec.tsx'],
   transform: {
-    '^.+\\.(t|j)s$': 'ts-jest',
+    '^.+\\.(t|j)sx$': 'ts-jest',
   },
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
 };
 export default config;
