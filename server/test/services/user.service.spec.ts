@@ -1,8 +1,4 @@
-import { UserRepository } from '../../src/repositories/user.repository';
-import { UserService } from '../../src/services/user.service';
-
-const userRepository = new UserRepository();
-const userService = new UserService(userRepository);
+import { userService, userRepository } from '../../src/di';
 
 describe('유저 서비스 테스트입니다.', () => {
   beforeAll(() => {
