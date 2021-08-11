@@ -5,7 +5,8 @@
   "author": "cothis",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development webpack serve --config webpack.config.ts"
+    "dev": "NODE_ENV=development webpack serve --config webpack.config.ts",
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^3.16.1",
