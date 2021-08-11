@@ -3,10 +3,12 @@ import cors from 'cors';
 import { UserController } from './controllers/user.controller';
 import { UserRepository } from './repositories/user.repository';
 import { UserService } from './services/user.service';
+import { MapRepository } from './repositories/map.repository';
 
-const userRepository = new UserRepository();
-userRepository.createUser({ name: 'test', nickname: 'test' });
-const userService = new UserService(userRepository);
+// const userRepository = new UserRepository();
+const mapRepository = new MapRepository();
+
+const userService = new UserService(mapRepository);
 const userController = new UserController(userService);
 
 const app = express();

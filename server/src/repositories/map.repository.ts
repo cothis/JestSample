@@ -2,26 +2,26 @@ import { CreateUserForm } from '../dtos/create-user-form';
 import { User } from '../entities/user.entity';
 import { IUserRepository } from './IUserRepository';
 
-export class UserRepository implements IUserRepository {
-  users: User[] = [];
+export class MapRepository implements IUserRepository {
+  users = new Map<number, User>();
   sequence: number = 0;
 
   findAll() {
-    return this.users;
+    return Array.from(this.users.values());
   }
 
   findById(id: number) {
-    return this.users.find((user) => user.id == id);
+    return this.users.get(id);
   }
 
   createUser(user: CreateUserForm) {
     const newUser = { ...user, id: ++this.sequence };
-    this.users.push(newUser);
+    this.users.set(newUser.id, newUser);
     return newUser;
   }
 
   clear() {
-    this.users = [];
+    this.users.clear();
     this.sequence = 0;
   }
 }

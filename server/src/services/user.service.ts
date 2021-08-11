@@ -1,11 +1,12 @@
 import { CreateUserForm } from '../dtos/create-user-form';
 import { User } from '../entities/user.entity';
+import { IUserRepository } from '../repositories/IUserRepository';
 import { UserRepository } from '../repositories/user.repository';
 
 export class UserService {
-  userRepository!: UserRepository;
+  userRepository!: IUserRepository;
 
-  constructor(userRepository: UserRepository) {
+  constructor(userRepository: IUserRepository) {
     this.userRepository = userRepository;
   }
 
