@@ -1,8 +1,8 @@
 import { CreateUserForm } from '../dtos/create-user-form';
 import { User } from '../entities/user.entity';
-import { IUserRepository } from './user.repository.interface';
+import { UserRepository } from './user.repository.interface';
 
-export class MapRepository implements IUserRepository {
+export class MapUserRepository implements UserRepository {
   users = new Map<number, User>();
   sequence: number = 0;
 

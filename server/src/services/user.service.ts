@@ -1,10 +1,10 @@
 import { CreateUserForm } from '../dtos/create-user-form';
-import { IUserRepository } from '../repositories/user.repository.interface';
+import { UserRepository } from '../repositories/user.repository.interface';
 
 export class UserService {
-  userRepository!: IUserRepository;
+  userRepository!: UserRepository;
 
-  constructor(userRepository: IUserRepository) {
+  constructor(userRepository: UserRepository) {
     this.userRepository = userRepository;
   }
 

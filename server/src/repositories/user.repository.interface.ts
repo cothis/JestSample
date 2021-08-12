@@ -1,7 +1,7 @@
 import { CreateUserForm } from '../dtos/create-user-form';
 import { User } from '../entities/user.entity';
 
-export interface IUserRepository {
+export interface UserRepository {
   findByName(name: string): User | undefined;
 
   findAll(): User[];

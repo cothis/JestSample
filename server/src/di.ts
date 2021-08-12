@@ -1,10 +1,10 @@
 import { UserController } from './controllers/user.controller';
-import { MapRepository } from './repositories/map.repository';
-import { UserRepository } from './repositories/user.repository';
+import { MapUserRepository } from './repositories/map.user.repository';
+import { ArrayUserRepository } from './repositories/array.user.repository';
 import { UserService } from './services/user.service';
 
 // const userRepository = new UserRepository();
-const userRepository = new MapRepository();
+const userRepository = new MapUserRepository();
 
 export { userRepository };
 export const userService = new UserService(userRepository);

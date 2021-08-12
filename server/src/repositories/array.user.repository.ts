@@ -1,8 +1,8 @@
 import { CreateUserForm } from '../dtos/create-user-form';
 import { User } from '../entities/user.entity';
-import { IUserRepository } from './user.repository.interface';
+import { UserRepository } from './user.repository.interface';
 
-export class UserRepository implements IUserRepository {
+export class ArrayUserRepository implements UserRepository {
   users: User[] = [];
   sequence: number = 0;
 
