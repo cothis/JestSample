@@ -1,6 +1,6 @@
 import { CreateUserForm } from '../dtos/create-user-form';
 import { User } from '../entities/user.entity';
-import { IUserRepository } from './IUserRepository';
+import { IUserRepository } from './user.repository.interface';
 
 export class MapRepository implements IUserRepository {
   users = new Map<number, User>();

@@ -1,7 +1,5 @@
 import { CreateUserForm } from '../dtos/create-user-form';
-import { User } from '../entities/user.entity';
-import { IUserRepository } from '../repositories/IUserRepository';
-import { UserRepository } from '../repositories/user.repository';
+import { IUserRepository } from '../repositories/user.repository.interface';
 
 export class UserService {
   userRepository!: IUserRepository;
