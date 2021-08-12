@@ -19,6 +19,14 @@ export class UserService {
   }
 
   createUser(user: CreateUserForm) {
+    this.validateDuplicateUser(user.name);
+
     return this.userRepository.createUser(user);
+  }
+
+  validateDuplicateUser(name: string) {
+    if (this.userRepository.findByName(name)) {
+      throw new Error('이미 가입한 이름입니다.');
+    }
   }
 }

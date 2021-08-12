@@ -14,6 +14,10 @@ export class UserRepository implements IUserRepository {
     return this.users.find((user) => user.id == id);
   }
 
+  findByName(name: string): User | undefined {
+    return this.users.find((user) => user.name === name);
+  }
+
   createUser(user: CreateUserForm) {
     const newUser = { ...user, id: ++this.sequence };
     this.users.push(newUser);

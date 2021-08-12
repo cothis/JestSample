@@ -10,6 +10,10 @@ export class MapRepository implements IUserRepository {
     return Array.from(this.users.values());
   }
 
+  findByName(name: string): User | undefined {
+    return Array.from(this.users.values()).find((user) => user.name === name);
+  }
+
   findById(id: number) {
     return this.users.get(id);
   }

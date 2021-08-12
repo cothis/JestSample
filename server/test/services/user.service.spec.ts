@@ -37,6 +37,18 @@ describe('유저 서비스 테스트입니다.', () => {
     expect(newUser2.id).toBe(2);
   });
 
+  it('중복 이름 가입 방지가 잘 되어야 합니다.', () => {
+    //given
+    const user1 = { name: 'test1', nickname: 'nickname1' };
+    const user2 = { name: 'test1', nickname: 'nickname2' };
+    const newUser1 = userService.createUser(user1);
+
+    //when
+
+    //then
+    expect(() => userService.createUser(user2)).toThrowError();
+  });
+
   it('전체조회가 잘 될까요? 2명을 입력한 후, 2가 나와야 합니다.', () => {
     //given
     const user1 = { name: 'test1', nickname: 'nickname1' };
