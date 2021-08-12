@@ -1,12 +1,11 @@
 import React from 'react';
-import { User, Test } from './App';
+import { User } from './App';
 
 interface Props {
   users: User[];
-  children?: React.ReactNode;
 }
 
-const UserList = ({ users, children }: Props) => {
+const UserList = ({ users }: Props) => {
   const lis = users.map((user) => (
     <li key={user.id}>
       {user.name}({user.nickname})
@@ -15,7 +14,6 @@ const UserList = ({ users, children }: Props) => {
 
   return (
     <div>
-      {children}
       <ul>{lis}</ul>
     </div>
   );

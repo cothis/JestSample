@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { dateToString } from '../util';
 import Join from './Join';
 import UserList from './UserList';
+import Counter from './Counter';
 
 export interface User {
   id: number;
@@ -10,6 +12,7 @@ export interface User {
 
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const date = dateToString(new Date());
 
   const getUsers = useCallback(() => {
     fetch('http://localhost:3000/api/users', { credentials: 'include' })
@@ -23,18 +26,12 @@ const App = () => {
 
   return (
     <div>
-      <UserList users={users}>
-        <Test></Test>
-        후아
-        <Test></Test>
-      </UserList>
+      <UserList users={users} />
       <Join getUsers={getUsers} />
+      <div>{date}</div>
+      <Counter />
     </div>
   );
 };
 
 export default App;
-
-export const Test = () => {
-  return <div>hi</div>;
-};

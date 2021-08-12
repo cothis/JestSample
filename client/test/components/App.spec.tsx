@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from '../../src/components/App';
 import { User } from '../../src/components/App';
 
@@ -14,12 +13,10 @@ global.fetch = jest.fn().mockImplementation(() =>
 
 let container: HTMLElement | null;
 describe('App.tsx를 테스트해보자~', () => {
-  it('하위 컴포넌트까지 렌더링을 잘 시켜주는지 확인하기', () => {
+  it('하위 컴포넌트까지 렌더링을 잘 시켜주는지 확인하기', async () => {
     // 첫 렌더 테스트하기
-    act(() => {
-      render(<App />);
-      expect(true).toBeTruthy();
-    });
+    const app = render(<App />);
+    await waitFor(() => {});
   });
 });
 
