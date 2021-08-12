@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { UserService } from '../services/user.service';
 
 export class UserController {
@@ -25,13 +25,12 @@ export class UserController {
     }
   };
 
-  createUser = (req: Request, res: Response) => {
+  createUser = (req: Request, res: Response, next: NextFunction) => {
     console.log(req.body);
     try {
       res.json(this.userService.createUser(req.body));
     } catch (err) {
-      console.error(err);
-      throw err;
+      next(err);
     }
   };
 }
