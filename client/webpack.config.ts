@@ -5,7 +5,7 @@ const config: webpack.Configuration = {
   mode: 'development',
   entry: { main: './src/main.tsx' },
   output: {
-    path: path.resolve(__dirname, './build'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'main.js',
   },
   resolve: {
@@ -29,9 +29,9 @@ const config: webpack.Configuration = {
   plugins: [],
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './public',
+    contentBase: path.resolve(__dirname, 'public'),
     host: 'localhost',
-    port: 9000,
+    port: 8000,
     historyApiFallback: true,
   },
 };

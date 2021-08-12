@@ -23,10 +23,18 @@ const App = () => {
 
   return (
     <div>
-      <UserList users={users} />
+      <UserList users={users}>
+        <Test></Test>
+        후아
+        <Test></Test>
+      </UserList>
       <Join getUsers={getUsers} />
     </div>
   );
 };
 
 export default App;
+
+export const Test = () => {
+  return <div>hi</div>;
+};
