@@ -3,7 +3,7 @@ import { MapUserRepository } from './repositories/map.user.repository';
 import { ArrayUserRepository } from './repositories/array.user.repository';
 import { UserService } from './services/user.service';
 
-// const userRepository = new UserRepository();
+// const userRepository = new ArrayUserRepository();
 const userRepository = new MapUserRepository();
 
 export { userRepository };
