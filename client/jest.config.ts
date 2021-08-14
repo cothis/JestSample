@@ -6,8 +6,7 @@ const config: Config.InitialOptions = {
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   testMatch: ['<rootDir>/test/**/*.spec.ts?(x)'],
   transform: {
-    '^.+\\.(t|j)s$': 'ts-jest',
-    '^.+\\.(t|j)s?x$': 'ts-jest',
+    '^.+\\.(t|j)sx?$': 'ts-jest',
   },
   testEnvironment: 'jsdom',
 };
